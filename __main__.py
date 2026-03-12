@@ -46,26 +46,28 @@ def generate_hex_map(shape: Shape) -> tuple[dict[tuple[int, int], str], list[lis
     grid = {}
     array = []
 
-    for row in range(-shape.rows +1, shape.rows):
+    for row in range(-shape.rows + 1, shape.rows):
         current_row = []
-        for col in range(-shape.cols +1, shape.cols):
+        for col in range(-shape.cols + 1, shape.cols):
             if shape.is_generable(row, col):
-                grid[(row, col)] = "✓"
-                current_row.append("✓")
+                grid[(row, col)] = '✓'
+                current_row.append('✓')
             else:
-                current_row.append(" ")
-        
+                current_row.append('')
+
         array.append(current_row)
 
-    return grid, array
-    
+    return grid, clear_list(array)
 
-def print_shape(grid: dict[tuple[int,int], str], array: list):
-    for key in grid:
-        print(f"({key[0]:3}, {key[1]:3}) → {grid[key]}")
+
+def print_shape(grid: dict[tuple[int, int], str], array: list[list[str]]):
+    # for key in grid:
+    #     print(f"({key[0]:3}, {key[1]:3}) → {grid[key]}")
+    # print("\n")
 
     for row in array:
-        print(" ".join(row))
+        print(' '.join([' ' if x == '' else x for x in row]))
+    print("\n")
 
 
 if __name__ == '__main__':
