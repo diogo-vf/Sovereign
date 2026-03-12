@@ -1,5 +1,6 @@
 from typing import Any
 from map_generator import Shape, Hexagone, Rectangle
+from map_generator import Shape, Hexagon, Rectangle
 
 def generate_hex_map(shape: Shape) -> tuple[dict[tuple[int,int], str], list]:
     """
@@ -34,10 +35,9 @@ def print_shape(grid: dict[tuple[int,int], str], array: list):
     for row in array:
         print(" ".join(row))
 
-        
-if __name__ == "__main__":
-    for shape in [Rectangle(3,5), Hexagone(5)]:
-        print(f"{shape.__class__.__name__} (cells:{shape.total_cells()})")
-        print("_____________________")
-        print_shape(*generate_hex_map(shape))
 
+if __name__ == '__main__':
+    for s in [Rectangle(3, 5), Hexagon(5)]:
+        print(f"{s.__class__.__name__} (cells:{s.total_cells()})")
+        print('_____________________')
+        print_shape(*generate_hex_map(s))

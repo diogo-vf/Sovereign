@@ -1,3 +1,3 @@
 from .shape import Shape
-from .hexagone import Hexagone
+from .hexagon import Hexagon
 from .rectangle import Rectangle

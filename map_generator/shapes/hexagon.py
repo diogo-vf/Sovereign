@@ -1,6 +1,7 @@
 from . import Shape
 
-class Hexagone(Shape):
+
+class Hexagon(Shape):
     def __init__(self, length_side: int = 2):
         super().__init__(rows=length_side, cols=length_side)
 
