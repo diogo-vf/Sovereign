@@ -4,7 +4,7 @@ from map_generator import Shape, Hexagon, Rectangle
 
 def remove_empty_cols(array: list[list[str]])-> list[list[str]]:
     rows = len(array)
-    list_to_clear = array.copy()
+    list_to_clear = array
 
     # starting from the end, prevent out of index
     for col in range(len(list_to_clear[0]))[::-1]:
@@ -30,7 +30,7 @@ def remove_empty_rows(array: list[list[str]])-> list[list[str]]:
 
 
 def clear_list(array: list[list[str]]) -> list[list[str]]:
-    new_list = remove_empty_cols(array)
+    new_list = remove_empty_cols(array.copy())
     return remove_empty_rows(new_list)
 
 
