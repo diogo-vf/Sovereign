@@ -2,7 +2,7 @@ from typing import Any
 from map_generator import Shape, Hexagon, Rectangle
 
 
-def remove_empty_cols(array: list[list[str]])-> list[list[str]]:
+def remove_empty_cols(array: list[list[str]]) -> list[list[str]]:
     rows = len(array)
     list_to_clear = array
 
@@ -22,19 +22,21 @@ def remove_empty_cols(array: list[list[str]])-> list[list[str]]:
     return list_to_clear
 
 
-def remove_empty_rows(array: list[list[str]])-> list[list[str]]:
+def remove_empty_rows(array: list[list[str]]) -> list[list[str]]:
     # start from the end
-    for i in range(len(list_to_clear))[::-1]:
-        if str.strip("".join(list_to_clear[i])) == '':
-            del list_to_clear[i]
+    for i in range(len(array))[::-1]:
+        if str.strip("".join(array[i])) == '':
+            del array[i]
+
+    return array
 
 
 def clear_list(array: list[list[str]]) -> list[list[str]]:
-    new_list = remove_empty_cols(array.copy())
+    new_list = remove_empty_cols(array)
     return remove_empty_rows(new_list)
 
 
-def generate_hex_map(shape: Shape) -> tuple[dict[tuple[int, int], str], list[list[str]]]: # TODO maybe generic type
+def generate_hex_map(shape: Shape) -> tuple[dict[tuple[int, int], str], list[list[str]]]:  # TODO maybe generic type
     """
     Generic hex map generator.
 
