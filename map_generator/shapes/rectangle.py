@@ -5,7 +5,8 @@ class Rectangle(Shape):
         super().__init__(rows, cols)
     
     def is_generable(self, row: int, col: int) -> bool:
-        return 0 <= row < self.rows and 0 <= col < self.cols
+        return -(self.rows // 2) <= row < (self.rows + 1) // 2 and \
+               -(self.cols // 2) <= col < (self.cols + 1) // 2
     
     def total_cells(self):
         return self.rows * self.cols

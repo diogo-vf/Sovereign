@@ -1,5 +1,5 @@
 from typing import Any
-from map_generator import Shape, Hexagon, Rectangle
+from map_generator import Shape, Hexagon, Rectangle, Rhombus, Diamond, Circle, Triangle, TriangleType
 
 
 def remove_empty_cols(array: list[list[str]]) -> list[list[str]]:
@@ -52,8 +52,9 @@ def generate_hex_map(shape: Shape) -> tuple[dict[tuple[int, int], str], list[lis
         current_row = []
         for col in range(-shape.cols + 1, shape.cols):
             if shape.is_generable(row, col):
-                grid[(row, col)] = '✓'
-                current_row.append('✓')
+                char = '•' if row == 0 and col == 0 else '✓'
+                grid[(row, col)] = char
+                current_row.append(char)
             else:
                 current_row.append('')
 
@@ -73,7 +74,17 @@ def print_shape(grid: dict[tuple[int, int], str], array: list[list[str]]):
 
 
 if __name__ == '__main__':
-    for s in [Rectangle(3, 5), Hexagon(5)]:
-        print(f"{s.__class__.__name__} (cells:{s.total_cells()})")
+    for s in [
+        Rectangle(3, 5), 
+        Hexagon(5), 
+        Rhombus(5), 
+        Diamond(5), 
+        Circle(5),
+        Triangle(5, triangle_type=TriangleType.ISOSCELES),
+        Triangle(5, triangle_type=TriangleType.EQUILATERAL),
+        Triangle(5, triangle_type=TriangleType.RIGHT),
+        Triangle(5, 9, TriangleType.RIGHT),
+    ]:
+        print(f"{s} (cells:{s.total_cells()})")
         print('_____________________')
         print_shape(*generate_hex_map(s))

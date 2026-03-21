@@ -16,3 +16,6 @@ class Shape(ABC):
     @abstractmethod
     def total_cells(self) -> int:
         pass
+
+    def __str__(self) -> str:
+        return type(self).__name__
