@@ -1,4 +1,4 @@
-def render_hex_map(cells: dict[tuple[int, int], str]) -> str:
+def render_map(cells: dict[tuple[int, int], str]) -> str:
     """
     Render every cell has an ASCII Hexagon in the console.
     Each cell is drawn as:
